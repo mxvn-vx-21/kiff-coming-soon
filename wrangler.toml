@@ -10,7 +10,7 @@ pages_build_output_dir = "public"
 [[d1_databases]]
 binding = "DB"
 database_name = "kiff"
-database_id = "REPLACE_WITH_YOUR_D1_ID"
+database_id = "rocco.ns.cloudflare.com"
 
 # ─────────────────────────────────────────────────────────────
 # R2 bucket binding (optional — used for storing screenshots /
