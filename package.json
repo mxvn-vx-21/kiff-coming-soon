@@ -1,0 +1,27 @@
+{
+  "name": "kiff-coming-soon",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Coming Soon landing page for kiffstudio.in (Kiff) — GlassUI, 3D honeycomb, cursor FX, Cloudflare Pages + Functions.",
+  "type": "module",
+  "scripts": {
+    "build:frontend": "esbuild src/main.ts --bundle --minify --sourcemap --target=es2020 --outfile=public/js/main.js",
+    "build:worker": "esbuild functions/**/*.ts --bundle --platform=node --format=esm --outdir=dist/functions --external:cloudflare:*",
+    "build": "npm run build:frontend",
+    "dev": "npm run build && wrangler pages dev public --compatibility-date=2024-09-23 --local",
+    "preview": "npm run build && wrangler pages dev public --compatibility-date=2024-09-23",
+    "deploy": "npm run build && wrangler pages deploy public --project-name=kiff",
+    "db:init": "wrangler d1 execute kiff --file=./schema.sql"
+  },
+  "dependencies": {
+    "three": "^0.169.0"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20241011.0",
+    "@types/node": "^22.7.5",
+    "@types/three": "^0.187.0",
+    "esbuild": "^0.24.0",
+    "typescript": "^5.6.3",
+    "wrangler": "^3.80.0"
+  }
+}
